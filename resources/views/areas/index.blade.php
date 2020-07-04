@@ -36,6 +36,6 @@
         </tbody>
       </table>
     </div>
-
+    {{ $areas->links() }}
   </div>
 @endsection

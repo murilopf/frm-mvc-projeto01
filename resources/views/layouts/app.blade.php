@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Estudos') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -80,6 +80,14 @@
 
         <main class="py-4">
             <!-- serve para criar sessões que possa receber conteudo dentro-->
+            @if(session()->has('success'))
+                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                    {{ session()->get('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>

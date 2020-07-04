@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+  <div class="container">
     <h1>Listagem de Estudos
-      <a href="#">
+      <a href="{{ route('studies.create') }}">
         <button class="btn btn-success">Cadastrar novo estudo</button>
       </a>
     </h1>
@@ -30,7 +30,7 @@
               <td>{{$study->date_finish}}</td>
               <td>{{$study->status}}</td>
               <td>
-                <a href="#" type="button" class="btn btn-primary">Editar</a>
+                <a href="{{ route('studies.edit', ['study' => $study->id]) }}" type="button" class="btn btn-primary">Editar</a>
                 <form action="{{ route('studies.destroy', ['study' => $study->id]) }}" method="post">
                   @csrf
                   <input type="hidden" name="_method" value="delete">
@@ -42,6 +42,6 @@
         </tbody>
       </table>
     </div>
-
+    {{ $studies->links() }}
   </div>
 @endsection

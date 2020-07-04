@@ -35,7 +35,7 @@ class AreaController extends Controller
     public function index()
     {
         // dd($areas); // para printar a variavel na tela
-        $areas = $this->area->all();
+        $areas = $this->area->paginate(5);
         return view('areas.index', compact('areas'));
     }
 

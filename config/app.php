@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+        *
+        */
+        'Cagartner\CorreiosConsulta\ServiceProvider',
     ],
 
     /*
@@ -227,6 +231,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Correios' => 'Cagartner\CorreiosConsulta\Facade',
     ],
 
 ];

@@ -10,6 +10,8 @@ class Study extends Model
  
     // public $timestamp = true;
  
+    public $perPage = 5;
+
     public $fillable = [
         'description',
         'date_init',
@@ -24,4 +26,22 @@ class Study extends Model
         // return $this->belongsTo(Area::class, 'area_id', 'id');
         return $this->belongsTo(Area::class);
     }
+
+
+    public function estudoEmAtraso()
+    {
+        return $this->where('status', 'Em atraso')->count();
+    }
+
+    public function estudoEmAndamento()
+    {
+        return $this->where('status', 'Em andamento')->count();
+    }
+
+    public function estudoEmFinalizado()
+    {
+        return $this->where('status', 'Finalizado')->count();
+    }
+    
+
 }
