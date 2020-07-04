@@ -22,5 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/areas', 'AreaController@index');
 // Route::get('/areas/create', 'AreaController@create');
+//->only() //define as rotas que serão criadas
+Route::resource('areas', 'AreaController')->except('show');
+Route::resource('studies', 'StudyController')->except('show');
 
-Route::resource('areas', 'AreaController');

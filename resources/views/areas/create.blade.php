@@ -2,16 +2,18 @@
 
 @section('content')
   <div class="container">
-    <form>
-        <div class="form-group">
-            <label >Descrição</label>
-            <input type="text" class="form-control" placeholder="Entre com uma descrição">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-        <div class="form-group">
-            <label>Cor</label>
-            <input type="text" class="form-control" placeholder="Entre com uma cor">
-        </div>
-        <button type="submit" class="btn btn-primary">Salvar</button>
+    @endif
+    <h1> Cadastro de Área </h1>
+    <form action="{{ route('areas.store') }}" method="post">
+      @include('areas._partial.form')
     </form>
   </div>
 @endsection

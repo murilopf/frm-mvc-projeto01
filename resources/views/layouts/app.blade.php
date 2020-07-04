@@ -34,10 +34,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Areas</a>
+                            <a class="nav-link" href="{{ route('areas.index') }}">Areas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Estudos</a>
+                            <a class="nav-link" href="{{ route('studies.index') }}">Estudos</a>
                         </li>
                     </ul>
 
