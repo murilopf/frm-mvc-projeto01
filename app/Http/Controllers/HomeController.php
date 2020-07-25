@@ -3,22 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Study;
-use App\Models\Area;
 
 class HomeController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Study $study, Area $areaParam)
+    public function __construct()
     {
-        $this->middleware('auth');
-        $this->study = $study;
-        $this->area = $areaParam;
+        // $this->middleware('auth');
     }
 
     /**
@@ -28,11 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //$areas = $this->area->all();
-        $atraso = $this->study->estudoEmAtraso();
-        $andamento = $this->study->estudoEmAndamento();
-        $finalizado = $this->study->estudoEmFinalizado();
-
-        return view('home', compact('atraso', 'andamento', 'finalizado'));
+        // dd(\Correios::cep('18013-000'));
+        return view('home'); 
     }
 }

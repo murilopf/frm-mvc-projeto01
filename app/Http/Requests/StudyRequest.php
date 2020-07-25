@@ -46,5 +46,4 @@ class StudyRequest extends FormRequest
             'area.required' => 'O campo área é obrigatório'
         ];
     }
-
 }

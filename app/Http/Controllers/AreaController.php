@@ -9,21 +9,22 @@ use App\Http\Requests\AreaRequest;
 class AreaController extends Controller
 {
 
-    //index -> primeiro acesso ao controller -> listagem dos dados
-    //create -> redireciona para a tela de criação -> retornar a view de cadastro
-    //store -> salvar os dados
-    //edit -> Redireciona para a tela de cadastro
-    //update -> atualizar os dados
-    //destroy -> deletar os dados
-    //show -> visualizar os dados sem poder editar
+    // Index -> Listagem dos dados
+    // Create -> Redirecionar para a tela de criação -> Retornar view de cadastro
+    // Store -> Salvar os dados
+    // Edit -> Redireciona para a tela de edição
+    // Update -> Atualizar os dados
+    // Destroy -> Deletar os dados
+    // Show -> Visualizar os dados sem poder editar
 
     /**
      * @var \App\Models\Area
-    */
+     */
     protected $area;
 
     public function __construct(Area $area)
     {
+        // $this->middleware('auth');
         $this->area = $area;
     }
 
@@ -34,7 +35,9 @@ class AreaController extends Controller
      */
     public function index()
     {
-        // dd($areas); // para printar a variavel na tela
+        // resource/views/areas
+        // dump && die
+        // dd($areas);
         $areas = $this->area->paginate(5);
         return view('areas.index', compact('areas'));
     }
@@ -46,6 +49,7 @@ class AreaController extends Controller
      */
     public function create()
     {
+        // resource/views/area/create.blade.php
         return view('areas.create');
     }
 
@@ -57,13 +61,13 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
-       // $area = new Area();
-       // $area->fill($request->all());
-       // $area->save();
+        $area = new Area();
+        $area->fill($request->all());
+        $area->save();
 
-       $this->area->fill($request->all());
-       $this->area->save();
-        
+        // $this->area->fill($request->all());
+        // $this->area->save();
+
         return redirect()->route('areas.index');
     }
 
@@ -83,7 +87,7 @@ class AreaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\AreaRequest  $request
+     * @param  \App\Http\Requests\AreaRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

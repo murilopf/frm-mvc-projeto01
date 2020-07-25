@@ -1,47 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
+<div class="container">
     <h1>Listagem de Estudos
-      <a href="{{ route('studies.create') }}">
-        <button class="btn btn-success">Cadastrar novo estudo</button>
-      </a>
+        <a href="{{ route('studies.create') }}" class="btn btn-info">Cadastrar</a>
     </h1>
-    <div class="table-responsive">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Áreas</th>
-            <th scope="col">Data inicial</th>
-            <th scope="col">Data final</th>
-            <th scope="col">Situação</th>
-            <th scope="col">Ações</th>
-          </tr>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+                <th>Área</th>
+                <th>Data Inicial</th>
+                <th>Data Final</th>
+                <th>Situação</th>
+                <th>Ações</th>
+            </tr>
         </thead>
         <tbody>
-          @foreach($studies as $study)
+            @foreach($studies as $study)
             <tr>
-              <th scope="row">{{$study->id}}</th>
-              <td>{{$study->description}}</td>
-              <td>{{$study->area->description}}</td>
-              <td>{{$study->date_init}}</td>
-              <td>{{$study->date_finish}}</td>
-              <td>{{$study->status}}</td>
-              <td>
-                <a href="{{ route('studies.edit', ['study' => $study->id]) }}" type="button" class="btn btn-primary">Editar</a>
-                <form action="{{ route('studies.destroy', ['study' => $study->id]) }}" method="post">
-                  @csrf
-                  <input type="hidden" name="_method" value="delete">
-                  <button type="delete" class="btn btn-danger">Excluir</button>
-                </form>
-              </td>
+                <td>{{ $study->id }}</td>
+                <td>{{ $study->description }}</td>
+                <td style="color: {{ $study->area->color }}">{{ $study->area->description }}</td>
+                <td>{{ $study->date_init }}</td>
+                <td>{{ $study->date_finish }}</td>
+                <td>{{ $study->status }}</td>
+                <td>
+                    <a href="{{ route('studies.edit', ['study' => $study->id]) }}" class="btn btn-info">Editar</a>
+                    <form action="{{ route('studies.destroy', ['study' => $study->id]) }}" method="post">
+                        @csrf
+                        <input type="hidden" name="_method" value="delete">
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+                </td>
             </tr>
-          @endforeach
+            @endforeach
         </tbody>
-      </table>
-    </div>
+    </table>
+
     {{ $studies->links() }}
-  </div>
+</div>
+
 @endsection

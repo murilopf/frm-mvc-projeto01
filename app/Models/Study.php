@@ -1,15 +1,15 @@
 <?php
- 
+
 namespace App\Models;
- 
+
 use Illuminate\Database\Eloquent\Model;
- 
+
 class Study extends Model
 {
     // public $table = "studies";
- 
+
     // public $timestamp = true;
- 
+
     public $perPage = 5;
 
     public $fillable = [
@@ -19,7 +19,7 @@ class Study extends Model
         'status',
         'area_id'
     ];
- 
+
     public function area()
     {
         // $this->belongsTo('App\Models\Area');
@@ -27,21 +27,8 @@ class Study extends Model
         return $this->belongsTo(Area::class);
     }
 
-
-    public function estudoEmAtraso()
-    {
-        return $this->where('status', 'Em atraso')->count();
-    }
-
-    public function estudoEmAndamento()
-    {
-        return $this->where('status', 'Em andamento')->count();
-    }
-
-    public function estudoEmFinalizado()
-    {
-        return $this->where('status', 'Finalizado')->count();
-    }
-    
-
+    // public function estudosEmAtraso()
+    // {
+    //     return $this->select('name', 'email')->get();
+    // }
 }

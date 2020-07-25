@@ -24,21 +24,21 @@ class AreaRequest extends FormRequest
     public function rules()
     {
         return [
-            //'finish_date' => 'required|string|after:start_date'
             'description' => 'required|string',
-            'color' => 'required|string'
+            'color' => 'required|string',
         ];
     }
+
     /**
      * Get the error messages for the defined validation rules.
      *
      * @return array
-    */
+     */
     public function messages()
     {
         return [
-            'description.required' => 'O campo descrição é obrigatório',
-            'color.required' => 'O campo cor é obrigatório'
+            'description.required' => 'O campo Descrição é obrigatório',
+            'color.required' => 'O campo Cor é obrigatório',
         ];
     }
 }
